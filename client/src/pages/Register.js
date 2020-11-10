@@ -7,44 +7,29 @@ import CheckButton from 'react-validation/build/button';
 import { isEmail } from 'validator';
 
 import { register } from '../actions/auth';
+import FormError from '../components/FormError';
 
 const required = (value) => {
   if (!value) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        This field is required!
-      </div>
-    );
+    return <FormError />;
   }
 };
 
 const validEmail = (value) => {
   if (!isEmail(value)) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        This is not a valid email.
-      </div>
-    );
+    return <FormError error="This is not a valid email." />;
   }
 };
 
 const vusername = (value) => {
   if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The username must be between 3 and 20 characters.
-      </div>
-    );
+    return <FormError error="The username must be between 3 and 20 characters." />;
   }
 };
 
 const vpassword = (value) => {
   if (value.length < 6 || value.length > 40) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The password must be between 6 and 40 characters.
-      </div>
-    );
+    return <FormError error="The password must be between 6 and 40 characters." />;
   }
 };
 

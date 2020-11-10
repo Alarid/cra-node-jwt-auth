@@ -7,14 +7,11 @@ import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 
 import { login } from '../actions/auth';
+import FormError from '../components/FormError';
 
 const required = (value) => {
   if (!value) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        This field is required!
-      </div>
-    );
+    return <FormError />;
   }
 };
 
